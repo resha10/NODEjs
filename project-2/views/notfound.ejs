@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 Not Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1f3b88, #4a69bd, #82ccdd);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .not-found-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 60px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      max-width: 600px;
+      width: 100%;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .not-found-box h1 {
+      font-size: 90px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .not-found-box p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    .not-found-box a {
+      display: inline-block;
+      background: #fff;
+      color: #1f3b88;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .not-found-box a:hover {
+      background: #152c63;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="not-found-box">
+    <h1>404</h1>
+    <p>Oops! The page you’re looking for doesn’t exist.</p>
+    <a href="/">Go Back Home</a>
+  </div>
+</body>
+</html>

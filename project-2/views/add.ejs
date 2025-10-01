@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Book - Library Manager</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 18px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #151414;
+      letter-spacing: 1px;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: #1e1d1d;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #859ee0;
+    }
+
+    header .btn-add {
+      background: linear-gradient(135deg, #667eea, #9887e3);
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    header .btn-add:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    /* ---------- FORM ---------- */
+    .form-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 40px 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      max-width: 520px;
+      width: 100%;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-box h1 {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #232121;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .form-box label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #1d1c1c;
+    }
+
+    .form-box input,
+    .form-box select {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 14px;
+      color: #2e2c2c;
+      transition: all 0.3s ease;
+    }
+
+    .form-box input::placeholder {
+      color: #121111;
+    }
+
+    .form-box input:focus,
+    .form-box select:focus {
+      border-color: #fff;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea, #9887e3);
+      color: #1f1e1e;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      transition: all 0.3s ease;
+    }
+
+    .form-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">📚 Library Manager</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/add">Add Book</a>
+      <a href="/books">View Books</a>
+    </nav>
+    <div>
+      <a href="/add"><button class="btn-add">+ Add Book</button></a>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="form-box">
+      <h1>Add Book</h1>
+      <form method="post" action="/add-book">
+        <label>Book No</label>
+        <input type="text" name="bookNo" placeholder="Enter book number" required>
+
+        <label>Book Name</label>
+        <input type="text" name="bookName" placeholder="Enter book name" required>
+
+        <label>Author</label>
+        <input type="text" name="author" placeholder="Enter author's name" required>
+        
+        <label>Published Date</label>
+        <input type="date" name="publishedDate" required>
+
+        <label>Language</label>
+        <input type="text" name="language" placeholder="Enter language" required>
+
+        <label>Image URL</label>
+        <input type="url" name="imageUrl" placeholder="Enter image URL">
+
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,858 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Node.js - About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #222;
+      --secondary: #6c757d;
+      --accent: #16a34a;
+      --bg: #f9fafb;
+      --text-dark: #222;
+      --text-light: #fff;
+      --card-bg: #ffffff;
+      --radius: 12px;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: var(--card-bg);
+      box-shadow: var(--shadow-sm);
+      padding: 1rem 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 140px 2rem 100px;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-block;
+      margin-top: 0.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* About */
+    .about-content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .about-image img {
+      width: 100%;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--secondary);
+    }
+
+    /* Team */
+    .team {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--secondary);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .member-image {
+      width: 120px;
+      height: 120px;
+      margin: auto;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+      border: 4px solid var(--accent);
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-info h3 {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .member-info p {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      transform: scale(1.15);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo"><a href="/">Node<span>.</span>Js</a></div>
+      <nav id="nav">
+        <a href="/">Home</a>
+        <a href="/about" class="active">About</a>
+        <a href="/services">Services</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>About Node.js</h1>
+      <p>Discover the power of JavaScript runtime built on Chrome's V8 JavaScript engine for building fast and scalable applications.</p>
+      <a href="#learn-more" class="cta-button">Learn More</a>
+    </section>
+
+    <section class="about-content" id="learn-more">
+      <div class="about-text">
+        <h2>Our Technology</h2>
+        <p>Node.js is an open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting.</p>
+        <p>Our team specializes in building efficient, scalable network applications using Node.js. We leverage its event-driven, non-blocking I/O model to create lightweight and efficient applications perfect for data-intensive real-time use.</p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">10M+</div>
+            <div class="stat-label">Downloads</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Satisfaction</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1074&q=80" alt="Node.js development">
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="section-title">
+        <h2>Our Core Team</h2>
+        <p>The talented individuals behind our Node.js expertise</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Ryan Dahl</h3>
+            <p>Node.js Creator</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Sarah Johnson</h3>
+            <p>Senior Developer</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Michael Chen</h3>
+            <p>DevOps Engineer</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Node.js - About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #222;
+      --secondary: #6c757d;
+      --accent: #16a34a;
+      --bg: #f9fafb;
+      --text-dark: #222;
+      --text-light: #fff;
+      --card-bg: #ffffff;
+      --radius: 12px;
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      list-style: none;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--card-bg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.8rem;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .toggle-icon {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 160px 2rem 100px;
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background: var(--accent);
+      color: var(--text-light);
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1rem;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(76, 175, 80, 0.4);
+    }
+
+    /* About Section */
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .about-text p {
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-image img {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      width: 100%;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--secondary);
+    }
+
+    /* Team */
+    .team {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--primary);
+    }
+
+    .section-title p {
+      color: var(--secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .member-image {
+      width: 120px;
+      height: 120px;
+      margin: auto;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+      border: 4px solid var(--accent);
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-info h3 {
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .member-info p {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      transform: scale(1.15);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-md);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .toggle-icon {
+        display: block;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo"><a href="/">Node<span>.</span>Js</a></div>
+      <nav id="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" class="active">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </nav>
+      <div class="toggle-icon" id="toggleBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>About Node.js</h1>
+      <p>Discover the power of JavaScript runtime built on Chrome's V8 JavaScript engine for building fast and scalable applications.</p>
+      <a href="#learn-more" class="cta-button">Learn More</a>
+    </section>
+
+    <section class="about-content" id="learn-more">
+      <div class="about-text">
+        <h2>Our Technology</h2>
+        <p>Node.js is an open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting.</p>
+        <p>Our team specializes in building efficient, scalable network applications using Node.js. We leverage its event-driven, non-blocking I/O model to create lightweight and efficient applications perfect for data-intensive real-time use.</p>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">10M+</div>
+            <div class="stat-label">Downloads</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Satisfaction</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1074&q=80" alt="Node.js development">
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="section-title">
+        <h2>Our Core Team</h2>
+        <p>The talented individuals behind our Node.js expertise</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Ryan Dahl</h3>
+            <p>Node.js Creator</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Sarah Johnson</h3>
+            <p>Senior Developer</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team Member">
+          </div>
+          <div class="member-info">
+            <h3>Michael Chen</h3>
+            <p>DevOps Engineer</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const nav = document.getElementById('nav');
+
+    toggleBtn.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.boxShadow = 'var(--shadow-sm)';
+      }
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('show');
+      });
+    });
+  </script>
+</body>
+
+</html>
