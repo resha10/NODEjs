@@ -1,15 +1,17 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+
+const port = 10000;
 
 const app = express();
 
-// Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const db = require('./config/db');
 
-app.listen(10000, () => {
-  console.log("Server is running on port 10000");
-});
+app.set('view engine', 'ejs');
+
+const User = require('./models/UserModel')
+
+app.use(express.urlencoded());
+
 app.get('/', (req, res) => {
     User.find({})
         .then((data) => {
