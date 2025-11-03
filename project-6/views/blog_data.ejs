@@ -1,0 +1,105 @@
+<%- include('header') %>
+
+<div class="page-wrapper">
+  <div class="page-breadcrumb bg-light shadow-sm py-3 mb-4 rounded">
+    <div class="row">
+      <div class="col-12 d-flex align-items-center px-4 justify-content-between">
+        <h4 class="page-title text-primary fw-semibold">📖 Blog Details</h4>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="/dashboard" class="text-decoration-none text-primary">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View All Blog</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-container pb-5">
+    <div class="page-header text-center mb-5">
+      <h1 class="fw-bold gradient-text">Blog Collection</h1>
+      <p class="text-muted fs-5">Discover amazing content across various categories ✨</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section text-center mb-4">
+      <h5 class="text-uppercase fw-semibold mb-3">Filter Blogs by Category</h5>
+      <div class="filter-buttons d-flex flex-wrap justify-content-center gap-2">
+        <a href="/blogs/view-blog/category/all" class="filter-btn <%= category === 'all' ? 'active-btn' : '' %>">All</a>
+        <a href="/blogs/view-blog/category/Technology" class="filter-btn <%= category === 'Technology' ? 'active-btn' : '' %>">Technology</a>
+        <a href="/blogs/view-blog/category/Lifestyle" class="filter-btn <%= category === 'Lifestyle' ? 'active-btn' : '' %>">Lifestyle</a>
+        <a href="/blogs/view-blog/category/Travel" class="filter-btn <%= category === 'Travel' ? 'active-btn' : '' %>">Travel</a>
+        <a href="/blogs/view-blog/category/Health" class="filter-btn <%= category === 'Health' ? 'active-btn' : '' %>">Health</a>
+        <a href="/blogs/view-blog/category/Education" class="filter-btn <%= category === 'Education' ? 'active-btn' : '' %>">Education</a>
+        <a href="/blogs/view-blog/category/Business" class="filter-btn <%= category === 'Business' ? 'active-btn' : '' %>">Business</a>
+        <a href="/blogs/view-blog/category/Entertainment" class="filter-btn <%= category === 'Entertainment' ? 'active-btn' : '' %>">Entertainment</a>
+        <a href="/blogs/view-blog/category/Science" class="filter-btn <%= category === 'Science' ? 'active-btn' : '' %>">Science</a>
+        <a href="/blogs/view-blog/category/Fashion" class="filter-btn <%= category === 'Fashion' ? 'active-btn' : '' %>">Fashion</a>
+        <a href="/blogs/view-blog/category/History & Culture" class="filter-btn <%= category === 'History & Culture' ? 'active-btn' : '' %>">History & Culture</a>
+        <a href="/blogs/view-blog/category/Photography" class="filter-btn <%= category === 'Photography' ? 'active-btn' : '' %>">Photography</a>
+      </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blogs-container d-flex flex-wrap justify-content-center gap-4">
+      <% blogs.forEach(function(blog) { %>
+        <div class="blog-card shadow-sm">
+          <div class="image-container">
+            <img src="<%= blog.image %>" class="blog-image" alt="<%= blog.title %>">
+            <div class="icon-buttons">
+              <button class="icon-btn heart-btn" onclick="toggleHeart(this)">
+                <i class="far fa-heart"></i>
+              </button>
+              <button class="icon-btn save-btn" onclick="toggleSave(this)">
+                <i class="far fa-bookmark"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <span class="category-badge"><%= blog.category %></span>
+            <h5 class="card-title mt-2"><%= blog.title %></h5>
+            <p class="blog-desc text-muted">
+              <%= blog.desc.split(" ").slice(0, 30).join(" ") %>
+              <% if (blog.desc.split(" ").length > 40) { %> ... <% } %>
+            </p>
+
+            <p class="meta-info small text-secondary">
+              <i class="fas fa-calendar-alt me-1"></i>
+              <%= new Date(blog.pubDate).toLocaleDateString() %> |
+              <%= new Date(blog.pubDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %>
+            </p>
+
+            <div class="author-info">
+              <img src="<%= blog.authImage %>" class="author-img rounded-circle me-2" alt="<%= blog.author %>">
+              <span class="author-name"><%= blog.authName %></span>
+            </div>
+          </div>
+
+          <div class="card-footer text-center">
+            <a href="/blogs/view-singleBlog/<%= blog._id %>" class="btn-view">
+              <i class="fas fa-book-open me-1"></i> Read Article
+            </a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination mt-5 text-center">
+      <% if (currentPage > 1) { %>
+        <a href="?page=<%= currentPage - 1 %>" class="page-link">« Prev</a>
+      <% } %>
+
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <a href="?page=<%= i %>" class="page-link <%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+        <a href="?page=<%= currentPage + 1 %>" class="page-link">Next »</a>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') %>
