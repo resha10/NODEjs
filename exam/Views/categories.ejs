@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories</title>
+</head>
+<body>
+
+<%- include("partials/navbar") %>
+
+<h2>Categories</h2>
+
+<form method="POST" action="/categories/add">
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    <button type="submit">Add Category</button>
+</form>
+
+<hr>
+
+<ul>
+    <% categories.forEach(cat => { %>
+        <li><%= cat.name %></li>
+    <% }) %>
+</ul>
+
+</body>
+</html>

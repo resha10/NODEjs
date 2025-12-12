@@ -1,0 +1,21 @@
+<nav style="background:#222; padding:12px; color:#fff; display:flex; justify-content:space-between;">
+    <h2>Task Management</h2>
+
+    <div>
+        <% if (user) { %>
+
+            <a href="/tasks" style="color:white; margin-right:15px;">My Tasks</a>
+
+            <% if (user.role === "admin") { %>
+                <a href="/tasks/all" style="color:white; margin-right:15px;">All User Tasks</a>
+                <a href="/categories" style="color:white; margin-right:15px;">Categories</a>
+            <% } %>
+
+            <a href="/auth/logout" style="color:red;">Logout</a>
+
+        <% } else { %>
+            <a href="/auth/login" style="color:white; margin-right:10px;">Login</a>
+            <a href="/auth/register" style="color:white;">Register</a>
+        <% } %>
+    </div>
+</nav>

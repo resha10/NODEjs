@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Task</title>
+</head>
+<body>
+
+<%- include("partials/navbar") %>
+
+<h2>Add Task</h2>
+
+<form method="POST" action="/tasks/add">
+
+    <label>Title:</label>
+    <input type="text" name="title" required>
+
+    <br><br>
+
+    <label>Description:</label>
+    <textarea name="description"></textarea>
+
+    <br><br>
+
+    <label>Category ID:</label>
+    <input type="text" name="category">
+
+    <br><br>
+
+    <button type="submit">Save Task</button>
+</form>
+
+</body>
+</html>

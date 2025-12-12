@@ -1,0 +1,10 @@
+<div style="border:1px solid #aaa; padding:12px; margin-bottom:10px;">
+    <h3><%= task.title %></h3>
+    <p><%= task.description %></p>
+
+    <% if (task.category) { %>
+        <p><strong>Category:</strong> <%= task.category.name %></p>
+    <% } %>
+
+    <a href="/tasks/delete/<%= task._id %>" style="color:red;">Delete</a>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tasks</title>
+</head>
+<body>
+
+<%- include("partials/navbar") %>
+
+<h2>
+    <% if (user.role === "admin") { %>
+        All Tasks
+    <% } else { %>
+        My Tasks
+    <% } %>
+</h2>
+
+<a href="/tasks/form">➕ Add Task</a>
+
+<hr>
+
+<div>
+    <% tasks.forEach(task => { %>
+        <%- include("taskItem", { task }) %>
+    <% }) %>
+</div>
+
+</body>
+</html>
